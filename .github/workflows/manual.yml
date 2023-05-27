@@ -1,4 +1,4 @@
-name: Auto Commit
+name: Auto commit
 
 on:
 
@@ -7,40 +7,47 @@ on:
       - main
       
   schedule:
-   - cron: "2 * * * *" 
+  - cron: "0 0 * * 6,3,2,1,0" # “At 00:00 on Saturday, Wednesday, Tuesday, Monday, and Sunday.” 
 
 jobs:
   auto_commit:
     runs-on: ubuntu-latest
     steps:
-      - name: Set global directory
-        run: git config --global --add safe.directory /github/workspace
-      - uses: actions/checkout@v3     
+      - name: DEBUG 
+        run: echo "::debug::Ref = ${{github.ref}}"
+      - uses: actions/checkout@v3      
         with:
          persist-credentials: false
-         fetch-depth: 1
+         fetch-depth: 0
 
       - name: Modify last update
         run: |
-          cat > LAST_UPDATED
           d=`date '+%Y-%m-%dT%H:%M:%SZ'`
-          echo $d > LAST_UPDATED
+          echo $d > CRIME
           
       - name: Commit changes
         run: |
-          git config --local user.email "bayuandisoraya@proton.me"
-          git config --local user.name "bayuandisoraya"
+          git config --local user.email "nerakoma@proton.me"
+          git config --local user.name "nerakomax"
           git add -A
           
-          arr[0]="compile"
+          arr[0]="Marchello: commited a crime"
+          arr[1]="Marchello: commited a crime"
+          arr[2]="Marchello: commited a crime"
+          arr[3]="Marchello: commited a crime"
+          arr[4]="Marchello: commited a crime"
+          arr[5]="Marchello: commited a crime"
+          arr[6]="Marchello: commited a crime"
+          arr[7]="Marchello: commited a crime"
+          arr[8]="Marchello: commited a crime"
+          arr[9]="Marchello: commited a crime"
           
           rand=$[$RANDOM % ${#arr[@]}]
           
           git commit -m "${arr[$rand]}"
           
       - name: GitHub Push
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v0.6.0
         with:
-          force: true
           directory: "."
           github_token: ${{ secrets.GITHUB_TOKEN }}
