@@ -7,7 +7,7 @@ on:
       - main
       
   schedule:
-  - cron: "0 0 * * 6,3,2,1,0" # “At 00:00 on Saturday, Wednesday, Tuesday, Monday, and Sunday.” 
+   - cron: "2 * * * *" 
 
 jobs:
   auto_commit:
@@ -28,7 +28,7 @@ jobs:
       - name: Commit changes
         run: |
           git config --local user.email "nerakoma@proton.me"
-          git config --local user.name "nerakomax"
+          git config --local user.name "nerakoma"
           git add -A
           
           arr[0]="Marchello: commited a crime"
